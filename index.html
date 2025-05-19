@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Websy – Your store, online in a blink ;)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet" />
   <style>
+    /* Color Palette */
+    :root {
+      --blue: #0071e3;
+      --orange: #f5a623;
+      --green: #7ed321;
+      --gray-light: #f0f4f8;
+      --gray-dark: #1c1c1e;
+      --gray-medium: #6e6e73;
+      --gray-soft: #8e8e93;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background: #fff;
-      color: #1c1c1e;
+      background: var(--gray-light);
+      color: var(--gray-dark);
       line-height: 1.6;
     }
 
-    header, section, footer {
+    header,
+    section,
+    footer {
       padding: 2rem;
       max-width: 900px;
       margin: auto;
@@ -23,110 +37,184 @@
 
     header {
       text-align: center;
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 3px solid var(--blue);
+      background: white;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      position: relative;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.75rem;
+      font-size: 3rem;
       font-weight: 600;
+      color: var(--blue);
+      font-family: 'Pacifico', cursive;
+      letter-spacing: 1px;
     }
 
     header p {
       margin: 0.5rem 0 2rem;
       font-style: italic;
-      color: #6e6e73;
+      color: var(--gray-medium);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.15rem;
     }
 
     nav a {
       margin: 0 1rem;
       text-decoration: none;
-      font-weight: 500;
-      color: #0071e3;
-      transition: color 0.2s ease;
+      font-weight: 600;
+      color: var(--orange);
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
+      color: var(--green);
       text-decoration: underline;
     }
 
     section {
       padding: 3rem 2rem;
-      border-bottom: 1px solid #f0f0f0;
+      background: white;
+      margin-top: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    section:nth-of-type(even) {
+      background: var(--gray-light);
+      box-shadow: none;
     }
 
     h2 {
       margin-top: 0;
-      font-size: 1.8rem;
-      font-weight: 600;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--blue);
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 1rem;
     }
 
     ul {
       list-style: none;
       padding: 0;
-      margin: 1rem 0;
+      margin: 1rem 0 2rem;
     }
 
     ul li {
-      margin: .75rem 0;
-      padding-left: 1.5rem;
+      margin: 0.75rem 0;
+      padding-left: 1.8rem;
       position: relative;
-      color: #333;
+      color: var(--gray-dark);
+      font-size: 1.1rem;
     }
 
     ul li::before {
       content: "✓";
       position: absolute;
       left: 0;
-      color: #0071e3;
+      color: var(--orange);
       font-weight: bold;
+      font-size: 1.25rem;
+      top: 0;
     }
 
     button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
+      padding: 0.85rem 2rem;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 6px;
-      background: #000;
+      border-radius: 8px;
+      background: var(--orange);
       color: white;
-      font-weight: 500;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s ease-in-out;
+      transition: background 0.3s ease-in-out;
+      box-shadow: 0 4px 12px rgba(245, 166, 35, 0.5);
+      font-family: 'Poppins', sans-serif;
+      display: inline-block;
     }
 
     button:hover {
-      background: #1c1c1e;
+      background: var(--green);
+      box-shadow: 0 6px 15px rgba(126, 211, 33, 0.7);
     }
 
-    form input, form textarea {
+    form input,
+    form textarea {
       width: 100%;
-      padding: .75rem;
-      margin: .5rem 0 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-family: 'Poppins', sans-serif;
+      padding: 0.85rem;
+      margin: 0.5rem 0 1.2rem;
+      border: 2px solid var(--blue);
+      border-radius: 8px;
+      font-family: 'Open Sans', sans-serif;
       font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: var(--orange);
+      outline: none;
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      font-size: .9rem;
-      color: #8e8e93;
+      padding: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--gray-soft);
+      margin-top: 3rem;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Images */
+    .about-images {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .about-images img {
+      width: 140px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+      height: 140px;
+    }
+
+    /* Contact link styling */
+    #contact p a {
+      color: var(--blue);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    #contact p a:hover {
+      color: var(--orange);
+      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
 
       nav a {
         display: block;
-        margin: .5rem 0;
+        margin: 0.5rem 0;
       }
 
       section {
         padding: 2rem 1rem;
+        border-radius: 0;
+      }
+
+      .about-images {
+        justify-content: center;
       }
     }
   </style>
@@ -155,26 +243,32 @@
 
   <section id="about">
     <h2>Who We Are</h2>
-    <p><strong>Stefan Konig </strong> – Handles outreach and shows businesses their future site.</p>
-    <p><strong>Zayd AbdulQadir & Nadin Don</strong> – Design and build the site, fast and professional.</p>
+    <div class="about-images">
+      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=140&q=80" alt="Stefan" />
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=140&q=80" alt="Zayd & Nadin" />
+    </div>
+    <p><strong>Stefan</strong> – Handles outreach and shows businesses their future site.</p>
+    <p><strong>Zayd & Nadin</strong> – Design and build the site, fast and professional.</p>
     <p>We created Websy to help local businesses get online fast and affordably, no code or tech headaches required.</p>
   </section>
 
   <section id="contact">
     <h2>Contact Us</h2>
     <form action="mailto:zaydabdulqadir@gmail.com" method="POST" enctype="text/plain">
-      <input type="text" name="Name" placeholder="Your Name" required>
-      <input type="text" name="Business" placeholder="Business Name" required>
-      <input type="email" name="Email" placeholder="Email Address" required>
+      <input type="text" name="Name" placeholder="Your Name" required />
+      <input type="text" name="Business" placeholder="Business Name" required />
+      <input type="email" name="Email" placeholder="Email Address" required />
       <textarea name="Message" rows="4" placeholder="What can we help with?"></textarea>
       <button type="submit">Send Message</button>
     </form>
-    <p style="margin-top:1rem;">Prefer to talk? Call <a href="tel:+447881092981" style="color:#0071e3; text-decoration: none;">Stefan</a></p>
+    <p style="margin-top: 1rem;">
+      Prefer to talk? Call
+      <a href="tel:+447881092981">Stefan</a>
+    </p>
   </section>
 
   <footer>
     &copy; 2025 Websy. All rights reserved.
   </footer>
-
 </body>
 </html>
