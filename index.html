@@ -433,12 +433,12 @@
       .catch(error => {
         console.error('Error:', error);
       });
-
-      // Contact form handler (dummy)
+    // Contact form handler (fake msg)
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', e => {
       e.preventDefault();
-      
+      alert(`Thank you,${contactForm.name.value}! Your message has been sent.`);
+      contactForm.reset();
     });
     }
   </script>
