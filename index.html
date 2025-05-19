@@ -2,33 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Websy – Your store, online in a blink ;)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-
   <header>
-    <div class="logo">Websy</div>
-    <button id="modeToggle" class="mode-toggle" aria-label="Toggle dark/light mode">🌙</button>
+    <div class="logo-text">Websy</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="#contact">Contact</a>
+      <button id="modeToggle" aria-label="Toggle dark/light mode">🌙</button>
     </nav>
   </header>
 
   <main>
     <section class="hero">
       <h1>Your store, online in a blink ;)</h1>
-      <p>Professional one-page websites built for local businesses, fast.</p>
+      <p>We build professional websites for local businesses in 48 hours, flat $60. No hidden fees.</p>
       <a href="#contact" class="button">Get Started</a>
     </section>
 
-    <section id="about">
+    <section class="about">
       <h2>About Us</h2>
-      <p><strong>Stefan Konig</strong> handles outreach and onboarding. <strong>Zayd AbdulQadir & Nadin Don</strong> design and build professional sites within 48 hours.</p>
+      <p><strong>Stefan Konig</strong> handles outreach and shows businesses their future site.</p>
+      <p><strong>Zayd & Nadin</strong> design and build your site, fast and professionally.</p>
     </section>
 
     <section id="contact">
@@ -40,7 +40,7 @@
         <textarea name="Message" rows="4" placeholder="What can we help with?"></textarea>
         <button type="submit">Send Message</button>
       </form>
-      <p>Prefer to talk? Call <a href="tel:+447881092981">Stefan Konig</a></p>
+      <p style="margin-top:1rem;">Prefer to talk? <a href="tel:+447881092981">Call Stefan Konig</a></p>
     </section>
   </main>
 
@@ -48,6 +48,12 @@
     &copy; 2025 Websy. All rights reserved.
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const toggle = document.getElementById('modeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      toggle.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+    });
+  </script>
 </body>
 </html>
