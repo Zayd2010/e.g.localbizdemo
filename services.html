@@ -2,24 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Websy – Services</title>
+  <title>Our Services – Websy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* Repeat same styles as index.html for simplicity, but default dark mode with light toggle */
+    :root {
+      --bg-color: #000;
+      --text-color: #fff;
+      --link-color: #4ea1ff;
+      --card-bg: #1a1a1a;
+    }
+
+    body.light-mode {
+      --bg-color: #fff;
+      --text-color: #1c1c1e;
+      --link-color: #0071e3;
+      --card-bg: #f9f9f9;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background: #121212;
-      color: #ddd;
-      line-height: 1.6;
+      background: var(--bg-color);
+      color: var(--text-color);
       transition: background 0.3s, color 0.3s;
-    }
-
-    body.light {
-      background: #fff;
-      color: #1c1c1e;
     }
 
     header, section, footer {
@@ -29,121 +36,50 @@
     }
 
     header {
-      text-align: center;
-      border-bottom: 1px solid #333;
-      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #444;
+    }
+
+    .logo {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1rem;
     }
 
-    body.light header {
-      border-color: #e0e0e0;
-    }
-
-    .logo-title {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      cursor: default;
-    }
-
-    .logo-title svg {
-      width: 40px;
-      height: 40px;
-      fill: #4ea1ff;
-      flex-shrink: 0;
-    }
-
-    body.light .logo-title svg {
-      fill: #0071e3;
+    .logo img {
+      height: 36px;
+      margin-right: 0.75rem;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.75rem;
+      font-size: 2rem;
       font-weight: 600;
     }
 
-    header p {
-      margin: 0.5rem 0 2rem;
-      font-style: italic;
-      color: #aaa;
-      width: 100%;
-      text-align: center;
-    }
-
-    body.light header p {
-      color: #6e6e73;
-    }
-
-    nav {
-      position: absolute;
-      bottom: 0.8rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      font-weight: 500;
-    }
-
     nav a {
+      margin: 0 1rem;
       text-decoration: none;
-      color: #4ea1ff;
+      font-weight: 500;
+      color: var(--link-color);
       transition: color 0.2s ease;
-    }
-
-    body.light nav a {
-      color: #0071e3;
     }
 
     nav a:hover {
       text-decoration: underline;
     }
 
-    #mode-toggle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: #4ea1ff;
-      border: none;
-      color: #121212;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
+    .theme-toggle {
       cursor: pointer;
-      transition: background 0.3s;
-      font-size: 0.9rem;
-      user-select: none;
-    }
-
-    #mode-toggle:hover {
-      background: #2e7ddd;
-      color: #fff;
-    }
-
-    body.light #mode-toggle {
-      background: #0071e3;
-      color: white;
-    }
-
-    body.light #mode-toggle:hover {
-      background: #005bb5;
-    }
-
-    section {
-      padding: 3rem 2rem;
-      border-bottom: 1px solid #333;
-    }
-
-    body.light section {
-      border-color: #f0f0f0;
+      font-size: 1.4rem;
+      border: none;
+      background: none;
+      color: var(--text-color);
     }
 
     h2 {
-      margin-top: 0;
       font-size: 1.8rem;
       font-weight: 600;
     }
@@ -151,108 +87,82 @@
     ul {
       list-style: none;
       padding: 0;
-      margin: 1rem 0;
     }
 
-    ul li {
-      margin: 0.75rem 0;
+    li {
+      margin: 1rem 0;
       padding-left: 1.5rem;
       position: relative;
-      color: #ddd;
     }
 
-    body.light ul li {
-      color: #333;
-    }
-
-    ul li::before {
-      content: "✓";
+    li::before {
+      content: '✓';
       position: absolute;
       left: 0;
-      color: #4ea1ff;
+      color: var(--link-color);
       font-weight: bold;
-    }
-
-    button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      background: #000;
-      color: white;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-    }
-
-    button:hover {
-      background: #1c1c1e;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin: 0.5rem 0 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      background: #222;
-      color: #eee;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    body.light form input, 
-    body.light form textarea {
-      background: #fff;
-      border-color: #ccc;
-      color: #000;
     }
 
     footer {
       text-align: center;
       padding: 1rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    body.light footer {
-      color: #8e8e93;
+      font-size: .9rem;
+      color: #888;
     }
 
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        padding-bottom: 3.5rem;
-      }
-
-      header h1 {
-        font-size: 2rem;
-      }
-
       nav {
-        position: static;
-        transform: none;
-        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       nav a {
-        display: block;
         margin: 0.5rem 0;
-      }
-
-      section {
-        padding: 2rem 1rem;
-      }
-
-      #mode-toggle {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <header
+  <header>
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Example.svg/120px-Example.svg.png" alt="Websy Logo" />
+      <h1>Websy</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <section>
+    <h2>What We Offer</h2>
+    <ul>
+      <li>Custom websites ready in 48 hours</li>
+      <li>Mobile-friendly, fast-loading designs</li>
+      <li>Flat $60 per site – no hidden fees</li>
+      <li>Option to upgrade with logo, domain, email, etc.</li>
+    </ul>
+    <p><a href="contact.html" style="color: var(--link-color); text-decoration: underline;">Get started with your website today →</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Websy. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle("light-mode");
+      const button = document.querySelector('.theme-toggle');
+      button.textContent = body.classList.contains("light-mode") ? '☀️' : '🌙';
+    }
+    document.body.classList.remove("light-mode");
+  </script>
+
+</body>
+</html>
