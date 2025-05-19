@@ -423,7 +423,13 @@
       })
       .then(response => {
         if (response.ok) {
-          // Show success message
+           // Contact form handler (dummy)
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      alert(`Thank you, ${contactForm.name.value}! Your message has been sent.`);
+      contactForm.reset();
+    });
           document.getElementById('successMessage').style.display = 'block';
           form.reset();
         } else {
