@@ -423,13 +423,7 @@
       })
       .then(response => {
         if (response.ok) {
-           // Contact form handler (dummy)
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', e => {
-      e.preventDefault();
-      alert(`Thank you, ${contactForm.name.value}! Your message has been sent.`);
-      contactForm.reset();
-    });
+           
           document.getElementById('successMessage').style.display = 'block';
           form.reset();
         } else {
@@ -439,6 +433,14 @@
       .catch(error => {
         console.error('Error:', error);
       });
+
+      // Contact form handler (dummy)
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      alert(`Thank you, ${contactForm.name.value}! Your message has been sent.`);
+      contactForm.reset();
+    });
     }
   </script>
 
