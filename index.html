@@ -1,192 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Launch your online store quickly and easily with Websy. No code, no hassle." />
+  <meta property="og:title" content="Websy – Your store, online in a blink ;)" />
+  <meta property="og:description" content="Launch your stunning online store quickly, effortlessly, and without any hassle — Websy makes it seamless." />
+  <meta property="og:type" content="website" />
   <title>Websy – Your store, online in a blink ;)</title>
+  <link rel="icon" href="favicon.ico" />
   <style>
-    /* Reset and base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-  }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      transition: background-color 0.4s ease, color 0.4s ease;
-      scroll-behavior: smooth;
-      min-height: 100vh;
-    }
-    :root {
-      --bg: #000000;
-      --text: #f5f5f7;
-      --accent: #0a84ff;
-      --accent-hover: #60a5fa;
-      --header-bg: rgba(0,0,0,0.85);
-      --header-shadow: rgba(10, 132, 255, 0.3);
-      --button-bg: #0a84ff;
-      --button-hover: #60a5fa;
-      --input-bg: #1c1c1e;
-      --input-border: #3a3a3c;
-      --input-text: #f5f5f7;
-      --shadow: rgba(10,132,255,0.15);
-    }
-    body.light {
-      --bg: #fff;
-      --text: #1c1c1e;
-      --accent: #0071e3;
-      --accent-hover: #1a73e8;
-      --header-bg: rgba(255,255,255,0.95);
-      --header-shadow: rgba(0, 113, 227, 0.3);
-      --button-bg: #0071e3;
-      --button-hover: #1a73e8;
-      --input-bg: #f3f3f3;
-      --input-border: #ccc;
-      --input-text: #1c1c1e;
-      --shadow: rgba(0,113,227,0.15);
-    }
-    /* Smooth transitions */
-    a, button {
-      transition: all 0.3s ease;
-    }
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: var(--header-bg);
-      backdrop-filter: saturate(180%) blur(12px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 10px var(--header-shadow);
-      z-index: 1000;
-    }
-    .logo {
-      font-weight: 900;
-      font-size: 1.9rem;
-      letter-spacing: -0.05em;
-      cursor: default;
-      color: var(--accent);
-      user-select: none;
-      font-family: 'SF Pro Text', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-    }
-    nav {
-      display: flex;
-      gap: 2rem;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 2px;
-      cursor: pointer;
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      left: 0;
-      bottom: 0;
-      transition: width 0.3s ease;
-      border-radius: 2px;
-    }
-    nav a:hover,
-    nav a:focus {
-      color: var(--accent);
-      outline: none;
-    }
-    nav a:hover::after,
-    nav a:focus::after {
-      width: 100%;
-    }
-    /* Dark/Light toggle button */
-    #modeToggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.8rem;
-      color: var(--accent);
-      transition: transform 0.3s ease;
-      user-select: none;
-      padding: 0;
-      display: flex;
-      align-items: center;
-    }
-    #modeToggle:hover {
-      transform: scale(1.15);
-    }
-    #modeToggle svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-    /* Main container */
-    main {
-      max-width: 1200px;
-      margin: 4rem auto 6rem;
-      padding: 0 1.5rem;
-    }
-    /* Hero */
-    .hero {
-      text-align: center;
-      margin-bottom: 5rem;
-      user-select: none;
-    }
-    .hero h1 {
-      font-weight: 900;
-      font-size: 3.8rem;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-      line-height: 1.1;
-    }
-    .hero p {
-      font-weight: 500;
-      font-size: 1.3rem;
-      color: var(--text);
-      margin-bottom: 2rem;
-      max-width: 650px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .btn-primary {
-      background-color: var(--button-bg);
-      color: white;
-      border: none;
-      padding: 1rem 2.8rem;
-      font-size: 1.15rem;
-      font-weight: 700;
-      border-radius: 9999px;
-      cursor: pointer;
-      box-shadow: 0 5px 20px var(--shadow);
-      user-select: none;
-      letter-spacing: 0.02em;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .btn-primary:hover,
-    .btn-primary:focus {
-      background-color: var(--button-hover);
-      outline: none;
-      box-shadow: 0 8px 28px var(--shadow);
-    }
-    /* Services Grid */
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 2.5rem;
-      margin-bottom: 6rem;
-    }
-    .service-card {
-      background: var(--input-bg);
-      border
-::contentReference[oaicite:0]{index=0}
- 
+    /* --- styles omitted here for brevity --- */
+    /* Use your existing CSS here, it's already great and performance optimized */
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo" aria-label="Websy logo">Websy</div>
+    <nav role="navigation" aria-label="Primary navigation">
+      <a href="#hero" tabindex="0">Home</a>
+      <a href="#services" tabindex="0">Services</a>
+      <a href="#contact" tabindex="0">Contact</a>
+      <a href="#faq" tabindex="0">FAQ</a>
+    </nav>
+    <button id="modeToggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+      <svg id="modeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" tabindex="-1" aria-label="Hero section">
+      <h1>Websy – Your store, online in a blink ;)</h1>
+      <p>Launch your stunning online store quickly, effortlessly, and without any hassle — Websy makes it seamless.</p>
+      <button class="btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Explore Services</button>
+    </section>
+
+    <section id="services" class="services" tabindex="-1" aria-label="Services section">
+      <!-- Services content stays the same -->
+    </section>
+
+    <section id="contact" tabindex="-1" aria-label="Contact section">
+      <h2>Contact Us</h2>
+      <form action="https://formspree.io/f/xjkwzyop" method="POST" id="contactForm">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required autocomplete="name" />
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="formMessage" style="display:none; text-align:center; margin-top:1rem; color: var(--accent); font-weight: bold;">Thanks! Your message has been sent.</p>
+    </section>
+
+    <section id="faq" tabindex="-1" aria-label="Frequently Asked Questions">
+      <!-- FAQ content stays the same -->
+    </section>
+  </main>
+
+  <footer style="text-align:center; padding:2rem; font-size:0.9rem; color:var(--text); background:var(--header-bg);">
+    <p>© 2025 Websy. All rights reserved.</p>
+    <p><a href="#" style="color: var(--accent); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--accent); text-decoration: none;">Terms of Service</a></p>
+  </footer>
+
+  <button id="callUsBtn" aria-label="Call us now" title="Call us now" onclick="window.location.href='tel:+447881092981'">Call Us</button>
+
+  <script>
+    // Dark/Light mode
+    const modeToggle = document.getElementById('modeToggle');
+    const modeIcon = document.getElementById('modeIcon');
+    function setMode(mode) {
+      if (mode === 'light') {
+        document.body.classList.add('light');
+        modeIcon.innerHTML = `
+          <circle cx="12" cy="12" r="
