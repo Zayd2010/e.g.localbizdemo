@@ -1,272 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Websy – Your store, online in a blink ;)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      /* Dark mode colors */
-      --bg-dark: #1a1a2e;
-      --text-dark: #e0e0f0;
-      --accent-dark: #6c63ff;
-      --link-dark: #7bed9f;
-      --button-bg-dark: #4e3bff;
-      --button-hover-dark: #7967ff;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Websy – Your store, online in a blink ;)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg-dark: #121212;
+    --text-dark: #eee;
+    --accent-dark: #ff6f61;
+    --link-dark: #ff8a75;
 
-      /* Light mode colors */
-      --bg-light: #f7f7ff;
-      --text-light: #222233;
-      --accent-light: #ff6f91;
-      --link-light: #ff9671;
-      --button-bg-light: #ff6f91;
-      --button-hover-light: #ff4c6d;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-      line-height: 1.6;
-      transition: background-color 0.4s ease, color 0.4s ease;
-    }
-
-    body.light {
-      background-color: var(--bg-light);
-      color: var(--text-light);
-    }
-
+    --bg-light: #fefefe;
+    --text-light: #1c1c1e;
+    --accent-light: #0071e3;
+    --link-light: #005bb5;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  body.light {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #444;
+    background-color: inherit;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    color: var(--accent-dark);
+    user-select: none;
+    cursor: default;
+  }
+  body.light .logo {
+    color: var(--accent-light);
+  }
+  nav a {
+    color: var(--link-dark);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  body.light nav a {
+    color: var(--link-light);
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .mode-toggle {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+  }
+  body.light .mode-toggle {
+    color: var(--text-light);
+  }
+  main {
+    max-width: 800px;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+  }
+  section {
+    margin-bottom: 3rem;
+  }
+  h1, h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  p {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  ul li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.75rem;
+  }
+  ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent-dark);
+  }
+  body.light ul li::before {
+    color: var(--accent-light);
+  }
+  input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #888;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background-color: inherit;
+    color: inherit;
+    transition: border-color 0.3s ease;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-dark);
+  }
+  body.light input:focus, body.light textarea:focus {
+    border-color: var(--accent-light);
+  }
+  button, .button {
+    background-color: var(--accent-dark);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  button:hover, .button:hover {
+    background-color: #e85c50;
+  }
+  body.light button, body.light .button {
+    background-color: var(--accent-light);
+  }
+  body.light button:hover, body.light .button:hover {
+    background-color: #005bb5;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #444;
+    margin-top: 3rem;
+    color: var(--text-dark);
+  }
+  body.light footer {
+    border-color: #ccc;
+    color: var(--text-light);
+  }
+  a.phone-link {
+    color: var(--link-dark);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  body.light a.phone-link {
+    color: var(--link-light);
+  }
+  a.phone-link:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid #444;
-      position: sticky;
-      top: 0;
-      background-color: inherit;
-      z-index: 100;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
     }
-
-    .logo-text {
-      font-weight: 900;
-      font-size: 2rem;
-      color: var(--accent-dark);
-      cursor: default;
-      letter-spacing: 3px;
-      user-select: none;
-      font-style: italic;
-      transition: color 0.4s ease;
-      font-family: 'Poppins', sans-serif;
-      text-shadow: 0 0 8px var(--accent-dark);
-    }
-
-    body.light .logo-text {
-      color: var(--accent-light);
-      text-shadow: 0 0 8px var(--accent-light);
-    }
-
     nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      color: var(--link-dark);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    body.light nav a {
-      color: var(--link-light);
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: currentColor;
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover::after {
       width: 100%;
-    }
-
-    #modeToggle {
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: var(--text-dark);
-      transition: color 0.4s ease;
-      user-select: none;
-    }
-
-    body.light #modeToggle {
-      color: var(--text-light);
-    }
-
-    main {
-      max-width: 800px;
-      margin: 3rem auto 4rem;
-      padding: 0 1rem;
-    }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
-    .hero h2 {
-      font-weight: 700;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--accent-dark);
-      text-shadow: 0 0 12px var(--accent-dark);
-      transition: color 0.4s ease;
-    }
-
-    body.light .hero h2 {
-      color: var(--accent-light);
-      text-shadow: 0 0 12px var(--accent-light);
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: var(--text-dark);
-      transition: color 0.4s ease;
-    }
-
-    body.light .hero p {
-      color: var(--text-light);
-    }
-
-    .button {
-      background-color: var(--button-bg-dark);
-      color: #fff;
-      padding: 0.85rem 2.25rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 1.15rem;
-      box-shadow: 0 6px 15px rgba(108,99,255,0.6);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      user-select: none;
-    }
-
-    .button:hover {
-      background-color: var(--button-hover-dark);
-      box-shadow: 0 8px 25px rgba(121,103,255,0.8);
-    }
-
-    body.light .button {
-      background-color: var(--button-bg-light);
-      box-shadow: 0 6px 15px rgba(255,111,145,0.6);
-    }
-
-    body.light .button:hover {
-      background-color: var(--button-hover-light);
-      box-shadow: 0 8px 25px rgba(255,76,109,0.8);
-    }
-
-    section#about p {
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      transition: color 0.4s ease;
-    }
-
-    body.light section#about p {
-      color: var(--text-light);
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 0.85rem;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1.5px solid #888;
-      border-radius: 12px;
-      background: var(--bg-dark);
-      color: var(--text-dark);
-      font-size: 1rem;
-      transition: background-color 0.4s ease, color 0.4s ease;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body.light form input, body.light form textarea {
-      background: var(--bg-light);
-      color: var(--text-light);
-      border: 1.5px solid #ccc;
-    }
-
-    form textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    button[type="submit"] {
-      background-color: var(--button-bg-dark);
-      color: #fff;
-      padding: 0.85rem 1.75rem;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 1rem;
-      box-shadow: 0 6px 15px rgba(108,99,255,0.6);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    button[type="submit"]:hover {
-      background-color: var(--button-hover-dark);
-      box-shadow: 0 8px 25px rgba(121,103,255,0.8);
-    }
-
-    body.light button[type="submit"] {
-      background-color: var(--button-bg-light);
-      box-shadow: 0 6px 15px rgba(255,111,145,0.6);
-    }
-
-    body.light button[type="submit"]:hover {
-      background-color: var(--button-hover-light);
-      box-shadow: 0 8px 25px rgba(255,76,109,0.8);
-    }
-
-    footer {
       text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 0.95rem;
-      border-top: 1px solid #444;
-      color: var(--text-dark);
-      transition: color 0.4s ease, border-color 0.4s ease;
+      margin-top: 0.5rem;
     }
-
-    body.light footer {
-      color: var(--text-light);
-      border-color: #ccc;
-    }
-
-    p.call {
+    nav a {
+      margin: 0 0.75rem;
       font-size: 1.1rem;
-      margin-top: 1rem;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-dark);
-      transition: color 0.
+    }
+    main {
+      padding: 0 1rem;
+      margin: 1.5rem auto 3rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Websy</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a class="phone-link" href="tel:+447881092981" title="Call Stefan Konig">Call Stefan Konig</a>
+  </nav>
+  <button id="modeToggle" class="mode-toggle" aria-label="Toggle dark/light mode">🌙</button>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <h1>Your store, online in a blink ;)</h1>
+    <p>Professional one-page websites built for local businesses, fast.</p>
+    <a href="#contact" class="button">Get Started</a>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p><strong>Stefan Konig</strong> handles outreach and onboarding. <strong>Zayd AbdulQadir & Nadin Don</strong> design and build professional sites within 48 hours.</p>
+  </section>
+
+  <section id="services">
+    <h2>What We Offer</h2>
+    <ul>
+      <li>Custom-built websites in 48 hours</li>
+      <li>Mobile-friendly and fast-loading design</li>
+      <li>Flat pricing: $60 per site</li>
+      <li>Logo & banner design included</li>
+      <li>Optional domain + email setup</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form action="mailto:zaydabdulqadir@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="Name" placeholder="Your Name" required />
+      <input type="text" name="Business" placeholder="Business Name" required />
+      <input type="email" name="Email" placeholder="Email Address" required />
+      <textarea name="Message" rows="4" placeholder="What can we help with?"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Websy. All rights reserved.
+</footer>
+
+<script>
+  const toggleButton = document.getElementById('modeToggle');
+  const body = document.body;
+
+  function updateToggleIcon() {
+    toggleButton.textContent = body.classList.contains('light') ? '🌞' : '🌙';
+  }
+
+  toggleButton.addEventListener('click', () => {
+    body.classList.toggle('light');
+    updateToggleIcon();
+  });
+
+  // Initialize icon on load
+  updateToggleIcon();
+</
