@@ -424,8 +424,9 @@ contactForm.addEventListener('submit', function(event) {
   .then(response => {
     if (response.ok) {
       document.getElementById('successMessage').style.display = 'block';
-      alert(`Thank you, ${contactForm.name.value}! Your message has been sent. We appreciate you using Websy!`);
-      contactForm.reset();
+     contactForm.reset();
+alert(`Thank you, ${contactForm.name.value}! ...`);
+
     } else {
       alert('Oops! Something went wrong. Please try again.');
     }
