@@ -1,15 +1,15 @@
 :root {
   --bg: #000;
   --text: #fff;
-  --accent: #ff5722;
-  --link: #ff7043;
+  --accent: #007aff;
+  --link: #61dafb;
 }
 
 body.light {
   --bg: #fff;
-  --text: #222;
-  --accent: #ff7043;
-  --link: #ff5722;
+  --text: #1c1c1e;
+  --accent: #007aff;
+  --link: #007aff;
 }
 
 body {
@@ -18,88 +18,72 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  transition: all 0.3s ease;
 }
 
 header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--accent);
-  position: sticky;
-  top: 0;
-  background-color: var(--bg);
-  z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  align-items: center;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid #444;
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 2rem;
-  color: var(--accent);
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.1em;
-  cursor: default;
-  user-select: none;
+.logo-text {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 nav a {
-  color: var(--link);
   text-decoration: none;
-  margin-left: 1.5rem;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
+  color: var(--link);
+  font-weight: 500;
 }
 
 nav a:hover {
-  color: var(--accent);
   text-decoration: underline;
 }
 
-.mode-toggle {
+#modeToggle {
   background: none;
   border: none;
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   cursor: pointer;
   color: var(--text);
-  transition: color 0.3s ease;
+  margin-left: 1rem;
 }
 
 main {
-  flex-grow: 1;
-  max-width: 900px;
   padding: 2rem;
+  max-width: 900px;
   margin: auto;
-  width: 100%;
 }
 
 h1, h2 {
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--accent);
+  font-weight: 600;
+  color: var(--text);
 }
 
-p, ul {
-  font-weight: 400;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+.hero {
+  text-align: center;
+  padding: 3rem 0;
 }
 
 ul {
   list-style: none;
-  padding-left: 0;
+  padding-left: 1rem;
 }
 
 ul li::before {
-  content: "✓";
+  content: "✓ ";
   color: var(--accent);
-  margin-right: 0.5rem;
 }
 
 input, textarea {
@@ -107,13 +91,10 @@ input, textarea {
   padding: 0.75rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
-  border: 1px solid var(--accent);
+  border: 1px solid #888;
   border-radius: 6px;
   background: var(--bg);
   color: var(--text);
-  font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button, .button {
@@ -122,22 +103,17 @@ button, .button {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-}
-
-button:hover, .button:hover {
-  background-color: #e64a19;
+  text-decoration: none;
+  display: inline-block;
 }
 
 footer {
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 2rem 1rem;
   font-size: 0.9rem;
-  border-top: 1px solid var(--accent);
-  background-color: var(--bg);
   color: var(--text);
-  user-select: none;
+  border-top: 1px solid #444;
+  margin-top: 2rem;
 }
