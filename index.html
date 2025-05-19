@@ -277,4 +277,46 @@
       bottom: 2.5rem;
       right: 2.5rem;
       background-color: var(--button-bg);
-      color:
+      color: white;
+      padding: 1rem 1.8rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px var(--shadow);
+      user-select: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1100;
+    }
+    #callUsBtn:hover {
+      background-color: var(--button-hover);
+      box-shadow: 0 12px 30px var(--shadow);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      nav {
+        gap: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo" aria-label="Websy logo">Websy</div>
+    <nav role="navigation" aria-label="Primary navigation">
+      <a href="#hero" tabindex="0">Home</a>
+      <a href="#services" tabindex="0">Services</a>
+      <a href="#contact" tabindex="0">Contact</a>
+      <a href="#faq" tabindex="0">FAQ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" tabindex="-1" aria-label="Hero section">
+      <h1>Websy – Your store, online in a blink ;)</h1>
+      <p>Launch your stunning online store quickly, effortlessly, and without any hassle — Websy makes it seamless.</p>
+      <button class="btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})
