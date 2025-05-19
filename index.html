@@ -5,148 +5,230 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Websy – Your store, online in a blink ;)</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
   :root {
-    --bg: #000;
-    --text: #fff;
-    --accent: #0071e3;
-    --link: #0071e3;
-    --border: #333;
-    --input-bg: #111;
+    --bg-dark: #000;
+    --text-dark: #fff;
+    --accent-blue: #0071e3;
+    --link-dark: #61dafb;
+
+    --bg-light: #fff;
+    --text-light: #1c1c1e;
+    --link-light: #0071e3;
   }
-  body.light {
-    --bg: #fff;
-    --text: #1c1c1e;
-    --accent: #0071e3;
-    --link: #0071e3;
-    --border: #ccc;
-    --input-bg: #f9f9f9;
-  }
+
   body {
     margin: 0;
-    padding: 0;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
     line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
+
+  body.light {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+  }
+
   header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 3rem;
-    border-bottom: 1px solid var(--border);
-    background-color: var(--bg);
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    background: inherit;
+    z-index: 100;
   }
-  .logo-section {
+
+  .logo {
     font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--text);
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
     cursor: default;
     user-select: none;
+    color: inherit;
+    font-family: 'Poppins', sans-serif;
   }
+
   nav a {
-    color: var(--link);
+    color: var(--link-dark);
     text-decoration: none;
     margin-left: 2rem;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: color 0.2s ease;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
   }
-  nav a:hover,
-  nav a:focus {
-    text-decoration: underline;
-    color: #3399ff;
+
+  body.light nav a {
+    color: var(--link-light);
   }
-  .mode-toggle {
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-blue);
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover {
+    color: var(--accent-blue);
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  #modeToggle {
     background: none;
     border: none;
     font-size: 1.8rem;
     cursor: pointer;
-    color: var(--text);
-    transition: color 0.3s ease;
+    color: inherit;
+    transition: transform 0.3s ease;
   }
-  .mode-toggle:hover {
-    color: #3399ff;
+
+  #modeToggle:hover {
+    transform: scale(1.2);
   }
+
   main {
     max-width: 900px;
     margin: 3rem auto;
     padding: 0 1rem;
   }
-  h1, h2 {
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
+
   section {
     margin-bottom: 4rem;
-    display: none;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
   }
-  section.active {
-    display: block;
+
+  section:nth-child(1) {
+    animation-delay: 0.2s;
   }
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0;
+  section:nth-child(2) {
+    animation-delay: 0.4s;
   }
-  ul li::before {
-    content: "✓";
-    color: var(--accent);
-    margin-right: 0.75rem;
-    font-weight: 700;
+  section:nth-child(3) {
+    animation-delay: 0.6s;
   }
-  input, textarea {
-    width: 100%;
-    padding: 0.75rem;
-    margin-top: 0.5rem;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  h1, h2 {
+    font-weight: 600;
     margin-bottom: 1rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: var(--input-bg);
-    color: var(--text);
-    font-size: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
   }
-  input::placeholder,
-  textarea::placeholder {
-    color: #888;
+
+  .hero h2 {
+    font-size: 2.2rem;
   }
-  .button, button {
-    background-color: var(--accent);
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .button {
+    display: inline-block;
+    background-color: var(--accent-blue);
     color: #fff;
-    padding: 0.75rem 2rem;
+    padding: 0.9rem 2.4rem;
+    font-weight: 600;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: 700;
-    font-size: 1.1rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+  }
+
+  .button:hover {
+    box-shadow: 0 8px 20px rgba(0, 113, 227, 0.4);
+    transform: scale(1.05);
+  }
+
+  form input, form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-top: 0.6rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #666;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  body.light form input, 
+  body.light form textarea {
+    border-color: #ccc;
+  }
+
+  form input:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 8px var(--accent-blue);
+  }
+
+  button[type="submit"] {
+    background-color: var(--accent-blue);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
-    box-shadow: 0 4px 14px rgba(0, 113, 227, 0.4);
   }
-  .button:hover, button:hover {
-    background-color: #3399ff;
-    box-shadow: 0 6px 20px rgba(51, 153, 255, 0.6);
+
+  button[type="submit"]:hover {
+    background-color: #005bb5;
   }
+
   footer {
     text-align: center;
     padding: 2rem 1rem;
     font-size: 0.9rem;
-    border-top: 1px solid var(--border);
-    color: #666;
+    border-top: 1px solid #222;
+    color: inherit;
   }
+
+  /* Responsive */
   @media (max-width: 600px) {
     header {
-      flex-direction: column;
-      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 1rem;
     }
     nav {
       margin-top: 1rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
     nav a {
-      margin-left: 0;
-      margin-right: 1.5rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .hero h2 {
+      font-size: 1.6rem;
     }
   }
 </style>
@@ -154,36 +236,25 @@
 <body>
 
 <header>
-  <div class="logo-section">Websy</div>
+  <div class="logo">WEBSY</div>
   <nav>
-    <a href="#" data-page="home">Home</a>
-    <a href="#" data-page="services">Services</a>
-    <a href="#" data-page="contact">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="#contact">Contact</a>
   </nav>
-  <button id="modeToggle" class="mode-toggle" aria-label="Toggle dark/light mode">🌙</button>
+  <button id="modeToggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">🌙</button>
 </header>
 
 <main>
-  <section id="home" class="active">
+  <section class="hero">
     <h2>Your store, online in a blink ;)</h2>
     <p>Professional one-page websites built for local businesses, fast.</p>
-    <a href="#contact" class="button" data-page="contact">Get Started</a>
-
-    <section id="about">
-      <h2>About Us</h2>
-      <p><strong>Stefan Konig</strong> handles outreach and onboarding. <strong>Zayd AbdulQadir & Nadin Don</strong> design and build professional sites within 48 hours.</p>
-    </section>
+    <a href="#contact" class="button">Get Started</a>
   </section>
 
-  <section id="services">
-    <h2>What We Offer</h2>
-    <ul>
-      <li>Custom-built websites in 48 hours</li>
-      <li>Mobile-friendly and fast-loading design</li>
-      <li>Flat pricing: $60 per site</li>
-      <li>Logo & banner design included</li>
-      <li>Optional domain + email setup</li>
-    </ul>
+  <section id="about">
+    <h2>About Us</h2>
+    <p><strong>Stefan Konig</strong> handles outreach and onboarding. <strong>Zayd AbdulQadir & Nadin Don</strong> design and build professional sites within 48 hours.</p>
   </section>
 
   <section id="contact">
@@ -206,54 +277,18 @@
 <script>
   const modeToggle = document.getElementById('modeToggle');
   const body = document.body;
-  const navLinks = document.querySelectorAll('nav a');
-  const sections = document.querySelectorAll('main section');
 
-  // Initialize mode from localStorage or default dark
-  if(localStorage.getItem('mode') === 'light') {
-    body.classList.add('light');
-    modeToggle.textContent = '☀️';
-  } else {
-    body.classList.remove('light');
-    modeToggle.textContent = '🌙';
+  function updateToggleIcon() {
+    modeToggle.textContent = body.classList.contains('light') ? '☀️' : '🌙';
   }
 
   modeToggle.addEventListener('click', () => {
-    if(body.classList.contains('light')) {
-      body.classList.remove('light');
-      modeToggle.textContent = '🌙';
-      localStorage.setItem('mode', 'dark');
-    } else {
-      body.classList.add('light');
-      modeToggle.textContent = '☀️';
-      localStorage.setItem('mode', 'light');
-    }
+    body.classList.toggle('light');
+    updateToggleIcon();
   });
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const page = link.getAttribute('data-page');
-
-      sections.forEach(section => {
-        if(section.id === page) {
-          section.classList.add('active');
-        } else {
-          section.classList.remove('active');
-        }
-      });
-    });
-  });
-
-  // Also support internal anchor button links to contact
-  document.querySelectorAll('a[data-page="contact"]').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      sections.forEach(section => {
-        section.classList.toggle('active', section.id === 'contact');
-      });
-    });
-  });
+  // Initialize icon on load
+  updateToggleIcon();
 </script>
 
 </body>
