@@ -7,15 +7,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-dark: #000;
-      --text-dark: #fff;
-      --accent-dark: #00b4d8;
-      --link-dark: #61dafb;
+      /* Dark mode colors */
+      --bg-dark: #1a1a2e;
+      --text-dark: #e0e0f0;
+      --accent-dark: #6c63ff;
+      --link-dark: #7bed9f;
+      --button-bg-dark: #4e3bff;
+      --button-hover-dark: #7967ff;
 
-      --bg-light: #fff;
-      --text-light: #1c1c1e;
-      --accent-light: #0071e3;
-      --link-light: #0071e3;
+      /* Light mode colors */
+      --bg-light: #f7f7ff;
+      --text-light: #222233;
+      --accent-light: #ff6f91;
+      --link-light: #ff9671;
+      --button-bg-light: #ff6f91;
+      --button-hover-light: #ff4c6d;
     }
 
     body {
@@ -25,7 +31,7 @@
       background-color: var(--bg-dark);
       color: var(--text-dark);
       line-height: 1.6;
-      transition: all 0.3s ease;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     body.light {
@@ -45,36 +51,34 @@
       z-index: 100;
     }
 
-    /* Text Logo */
     .logo-text {
-      font-weight: 700;
-      font-size: 1.8rem;
+      font-weight: 900;
+      font-size: 2rem;
       color: var(--accent-dark);
       cursor: default;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       user-select: none;
-      transition: color 0.3s ease;
+      font-style: italic;
+      transition: color 0.4s ease;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 0 0 8px var(--accent-dark);
     }
 
     body.light .logo-text {
       color: var(--accent-light);
-    }
-
-    .logo-text:hover {
-      color: #00d4ff;
-      text-shadow: 0 0 8px #00d4ff;
+      text-shadow: 0 0 8px var(--accent-light);
     }
 
     nav {
       display: flex;
-      gap: 1.5rem;
       align-items: center;
+      gap: 1.5rem;
     }
 
     nav a {
       color: var(--link-dark);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 1rem;
       position: relative;
       transition: color 0.3s ease;
@@ -99,15 +103,13 @@
       width: 100%;
     }
 
-    /* Light/Dark toggle button on top-right */
     #modeToggle {
       background: none;
       border: none;
       font-size: 1.8rem;
       cursor: pointer;
       color: var(--text-dark);
-      transition: color 0.3s ease;
-      margin-left: 1rem;
+      transition: color 0.4s ease;
       user-select: none;
     }
 
@@ -117,7 +119,7 @@
 
     main {
       max-width: 800px;
-      margin: 2rem auto 4rem;
+      margin: 3rem auto 4rem;
       padding: 0 1rem;
     }
 
@@ -125,27 +127,25 @@
       margin-bottom: 3rem;
     }
 
-    h1, h2 {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
     .hero h2 {
-      font-size: 2.25rem;
+      font-weight: 700;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
       color: var(--accent-dark);
-      transition: color 0.3s ease;
+      text-shadow: 0 0 12px var(--accent-dark);
+      transition: color 0.4s ease;
     }
 
     body.light .hero h2 {
       color: var(--accent-light);
+      text-shadow: 0 0 12px var(--accent-light);
     }
 
     .hero p {
-      font-size: 1.15rem;
-      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
       color: var(--text-dark);
-      transition: color 0.3s ease;
+      transition: color 0.4s ease;
     }
 
     body.light .hero p {
@@ -153,15 +153,15 @@
     }
 
     .button {
-      background-color: var(--accent-dark);
+      background-color: var(--button-bg-dark);
       color: #fff;
-      padding: 0.75rem 2rem;
+      padding: 0.85rem 2.25rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      font-weight: 600;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 8px rgba(0,180,216,0.4);
+      font-weight: 700;
+      font-size: 1.15rem;
+      box-shadow: 0 6px 15px rgba(108,99,255,0.6);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
       display: inline-block;
@@ -169,24 +169,24 @@
     }
 
     .button:hover {
-      background-color: #00d4ff;
-      box-shadow: 0 6px 12px rgba(0,212,255,0.6);
+      background-color: var(--button-hover-dark);
+      box-shadow: 0 8px 25px rgba(121,103,255,0.8);
     }
 
     body.light .button {
-      background-color: var(--accent-light);
-      box-shadow: 0 4px 8px rgba(0,113,227,0.4);
+      background-color: var(--button-bg-light);
+      box-shadow: 0 6px 15px rgba(255,111,145,0.6);
     }
 
     body.light .button:hover {
-      background-color: #005fc1;
-      box-shadow: 0 6px 12px rgba(0,95,193,0.6);
+      background-color: var(--button-hover-light);
+      box-shadow: 0 8px 25px rgba(255,76,109,0.8);
     }
 
     section#about p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: var(--text-dark);
-      transition: color 0.3s ease;
+      transition: color 0.4s ease;
     }
 
     body.light section#about p {
@@ -195,62 +195,65 @@
 
     form input, form textarea {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.85rem;
       margin-top: 0.5rem;
       margin-bottom: 1rem;
-      border: 1px solid #888;
-      border-radius: 8px;
+      border: 1.5px solid #888;
+      border-radius: 12px;
       background: var(--bg-dark);
       color: var(--text-dark);
       font-size: 1rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      font-family: 'Poppins', sans-serif;
     }
 
     body.light form input, body.light form textarea {
       background: var(--bg-light);
       color: var(--text-light);
-      border: 1px solid #ccc;
+      border: 1.5px solid #ccc;
     }
 
     form textarea {
       resize: vertical;
+      min-height: 100px;
     }
 
     button[type="submit"] {
-      background-color: var(--accent-dark);
+      background-color: var(--button-bg-dark);
       color: #fff;
-      padding: 0.75rem 1.5rem;
+      padding: 0.85rem 1.75rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 1rem;
-      box-shadow: 0 4px 8px rgba(0,180,216,0.4);
+      box-shadow: 0 6px 15px rgba(108,99,255,0.6);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Poppins', sans-serif;
     }
 
     button[type="submit"]:hover {
-      background-color: #00d4ff;
-      box-shadow: 0 6px 12px rgba(0,212,255,0.6);
+      background-color: var(--button-hover-dark);
+      box-shadow: 0 8px 25px rgba(121,103,255,0.8);
     }
 
     body.light button[type="submit"] {
-      background-color: var(--accent-light);
-      box-shadow: 0 4px 8px rgba(0,113,227,0.4);
+      background-color: var(--button-bg-light);
+      box-shadow: 0 6px 15px rgba(255,111,145,0.6);
     }
 
     body.light button[type="submit"]:hover {
-      background-color: #005fc1;
-      box-shadow: 0 6px 12px rgba(0,95,193,0.6);
+      background-color: var(--button-hover-light);
+      box-shadow: 0 8px 25px rgba(255,76,109,0.8);
     }
 
     footer {
       text-align: center;
       padding: 1.5rem 1rem;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       border-top: 1px solid #444;
       color: var(--text-dark);
-      transition: color 0.3s ease;
+      transition: color 0.4s ease, border-color 0.4s ease;
     }
 
     body.light footer {
@@ -259,75 +262,11 @@
     }
 
     p.call {
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin-top: 1rem;
       user-select: none;
-    }
-
-    p.call a {
-      color: var(--link-dark);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    body.light p.call a {
-      color: var(--link-light);
-    }
-
-    p.call a:hover {
-      text-decoration: underline;
-      color: #00d4ff;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-      nav {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      main {
-        padding: 0 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="logo-text">Websy</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="#contact">Contact</a>
-      <button id="modeToggle" aria-label="Toggle dark/light mode">🌙</button>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <h2>Your store, online in a blink ;)</h2>
-      <p>Professional one-page websites built for local businesses, fast.</p>
-      <a href="#contact" class="button">Get Started</a>
-    </section>
-
-    <section id="about">
-      <h2>About Us</h2>
-      <p><strong>Stefan Konig</strong> handles outreach and onboarding. <strong>Zayd AbdulQadir & Nadin Don</strong> design and build professional sites within 48 hours.</p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <form action="mailto:zaydabdulqadir@gmail.com" method="POST" enctype="text/plain">
-        <input type="text" name="Name" placeholder="Your Name" required />
-        <input type="text" name="Business" placeholder="Business Name" required />
-        <input type="email" name="Email" placeholder="Email Address" required />
-        <textarea name="Message" rows="4" placeholder="What can we help with?"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <p class="call">Prefer to talk? Call
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-dark);
+      transition: color 0.
