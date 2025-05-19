@@ -1,80 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Websy – Your store, online in a blink ;)</title>
-
   <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
-      background-color: #f4f4f4;
-      font-family: Arial, sans-serif;
-      color: #333;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      scroll-behavior: smooth;
+      min-height: 100vh;
+    }
+    :root {
+      --bg: #000000;
+      --text: #f5f5f7;
+      --accent: #0a84ff;
+      --accent-hover: #60a5fa;
+      --header-bg: rgba(0,0,0,0.85);
+      --header-shadow: rgba(10, 132, 255, 0.3);
+      --button-bg: #0a84ff;
+      --button-hover: #60a5fa;
+      --input-bg: #1c1c1e;
+      --input-border: #3a3a3c;
+      --input-text: #f5f5f7;
+      --shadow: rgba(10,132,255,0.15);
+    }
+    body.light {
+      --bg: #fff;
+      --text: #1c1c1e;
+      --accent: #0071e3;
+      --accent-hover: #1a73e8;
+      --header-bg: rgba(255,255,255,0.95);
+      --header-shadow: rgba(0, 113, 227, 0.3);
+      --button-bg: #0071e3;
+      --button-hover: #1a73e8;
+      --input-bg: #f3f3f3;
+      --input-border: #ccc;
+      --input-text: #1c1c1e;
+      --shadow: rgba(0,113,227,0.15);
+    }
+    /* Smooth transitions */
+    a, button {
+      transition: all 0.3s ease;
     }
 
+    /* Header */
     header {
-      background-color: #222;
-      color: white;
-      padding: 20px;
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      background: var(--header-bg);
+      backdrop-filter: saturate(180%) blur(12px);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px var(--header-shadow);
+      z-index: 1000;
     }
-
     .logo {
-      font-size: 24px;
+      font-weight: 900;
+      font-size: 1.9rem;
+      letter-spacing: -0.05em;
+      cursor: default;
+      color: var(--accent);
+      user-select: none;
+      font-family: 'SF Pro Text', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     }
-
+    nav {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
     nav a {
-      color: white;
-      margin-right: 20px;
+      color: var(--text);
       text-decoration: none;
-    }
-
-    .btn-primary {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
+      position: relative;
+      padding-bottom: 2px;
       cursor: pointer;
     }
-
-    .btn-primary:hover {
-      background-color: #0056b3;
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      left: 0;
+      bottom: 0;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: var(--accent);
+      outline: none;
+    }
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
     }
 
+    /* Dark/Light toggle button */
+    #modeToggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+      user-select: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    #modeToggle:hover {
+      transform: scale(1.15);
+    }
+    #modeToggle svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    /* Main container */
+    main {
+      max-width: 1200px;
+      margin: 4rem auto 6rem;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero */
     .hero {
-      background-color: #333;
+      text-align: center;
+      margin-bottom: 5rem;
+      user-select: none;
+    }
+    .hero h1 {
+      font-weight: 900;
+      font-size: 3.8rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .hero p {
+      font-weight: 500;
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: 2rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      background-color: var(--button-bg);
       color: white;
-      padding: 50px;
+      border: none;
+      padding: 1rem 2.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px var(--shadow);
+      user-select: none;
+      letter-spacing: 0.02em;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: var(--button-hover);
+      outline: none;
+      box-shadow: 0 8px 28px var(--shadow);
+    }
+
+    /* Services Grid */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2.5rem;
+      margin-bottom: 6rem;
+    }
+    .service-card {
+      background: var(--input-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 30px var(--shadow);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .service-card:hover {
+      box-shadow: 0 18px 50px var(--shadow);
+      transform: translateY(-6px);
+    }
+    .service-card h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+    .service-card p {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Contact */
+    #contact {
+      max-width: 600px;
+      margin: 0 auto 6rem;
+      user-select: none;
+    }
+    #contact h2 {
+      font-weight: 900;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
       text-align: center;
     }
-
-    .service-card {
-      background-color: #fff;
-      padding: 20px;
-      margin: 10px;
-      border: 1px solid #ddd;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    #contact input,
+    #contact textarea {
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--input-text);
+      resize: vertical;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #contact input:focus,
+    #contact textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+      box-shadow: 0 0 12px var(--accent);
+    }
+    #contact button {
+      background-color: var(--button-bg);
+      color: white;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 1.15rem;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 20px var(--shadow);
+      user-select: none;
+    }
+    #contact button:hover,
+    #contact button:focus {
+      background-color: var(--button-hover);
+      outline: none;
+      box-shadow: 0 8px 28px var(--shadow);
     }
 
-    /* Additional styling as needed */
-  </style>
+    /* Floating Call Us button */
+    #callUsBtn {
+      position: fixed;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      background-color: var(--button-bg);
+      color: white;
+      padding: 1rem 1.8rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px var(--shadow);
+      user-select: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1100;
+    }
+    #callUsBtn:hover {
+      background-color: var(--button-hover);
+      box-shadow: 0 12px 30px var(--shadow);
+    }
 
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      nav {
+        gap: 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <div class="logo" aria-label="Websy logo">Websy</div>
     <nav role="navigation" aria-label="Primary navigation">
-      <a href="#hero" tabindex="0">Home</a>
-      <a href="#services" tabindex="0">Services</a>
-      <a href="#contact" tabindex="0">Contact</a>
-      <a href="#faq" tabindex="0">FAQ</a>
-    </nav>
+  <a href="#hero" tabindex="0">Home</a>
+  <a href="#services" tabindex="0">Services</a>
+  <a href="#contact" tabindex="0">Contact</a>
+  <a href="#faq" tabindex="0">FAQ</a> <!-- ✅ New FAQ link -->
+</nav>
     <button id="modeToggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
       <!-- Moon icon -->
       <svg id="modeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -83,68 +321,73 @@
     </button>
   </header>
 
-  <main>
-    <section class="hero" id="hero" tabindex="-1" aria-label="Hero section">
-      <h1>Websy – Your store, online in a blink ;)</h1>
-      <p>Launch your stunning online store quickly, effortlessly, and without any hassle — Websy makes it seamless.</p>
-      <button class="btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" aria-label="Explore services">Explore Services</button>
-    </section>
+ <main>
+  <section class="hero" id="hero" tabindex="-1" aria-label="Hero section">
+    <h1>Websy – Your store, online in a blink ;)</h1>
+    <p>Launch your stunning online store quickly, effortlessly, and without any hassle — Websy makes it seamless.</p>
+    <button class="btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" aria-label="Explore services">Explore Services</button>
+  </section>
 
-    <section id="services" class="services" tabindex="-1" aria-label="Services section">
-      <div class="service-card" tabindex="0" role="article" aria-labelledby="service1-title">
-        <h3 id="service1-title">Custom Landing Pages</h3>
-        <p>Elegant, responsive landing pages tailored to your business requirements, with no coding necessary.</p>
-      </div>
-      <div class="service-card" tabindex="0" role="article" aria-labelledby="service2-title">
-        <h3 id="service2-title">Store Setup</h3>
-        <p>Comprehensive store setup including payment gateway integration and inventory management—fully prepared for immediate sales.</p>
-      </div>
-      <div class="service-card" tabindex="0" role="article" aria-labelledby="service3-title">
-        <h3 id="service3-title">Marketing & SEO</h3>
-        <p>Enhance your online visibility with integrated SEO and marketing strategies designed to help your website get discovered easily.</p>
-      </div>
-    </section>
+  <section id="services" class="services" tabindex="-1" aria-label="Services section">
+    <div class="service-card" tabindex="0" role="article" aria-labelledby="service1-title">
+      <h3 id="service1-title">Custom Landing Pages</h3>
+      <p>Elegant, responsive landing pages tailored to your business requirements, with no coding necessary.</p>
+    </div>
+    <div class="service-card" tabindex="0" role="article" aria-labelledby="service2-title">
+      <h3 id="service2-title">Store Setup</h3>
+      <p>Comprehensive store setup including payment gateway integration and inventory management—fully prepared for immediate sales.</p>
+    </div>
+    <div class="service-card" tabindex="0" role="article" aria-labelledby="service3-title">
+      <h3 id="service3-title">Marketing & SEO</h3>
+      <p>Enhance your online visibility with integrated SEO and marketing strategies designed to help your website get discovered easily.</p>
+    </div>
+  </section>
 
-    <section id="contact" tabindex="-1" aria-label="Contact section">
-      <h2>Contact Us</h2>
-      <form id="contactForm" aria-describedby="contactDesc" action="https://formspree.io/f/xjkwzyop" method="POST">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" required autocomplete="name" />
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required autocomplete="email" />
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+  <section id="contact" tabindex="-1" aria-label="Contact section">
+    <h2>Contact Us</h2>
+    <form id="contactForm" aria-describedby="contactDesc">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required autocomplete="name" />
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required autocomplete="email" />
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
-    <section id="faq" tabindex="-1" aria-label="Frequently Asked Questions">
-      <h2 style="text-align:center; color: var(--accent); margin-bottom: 2rem;">FAQs</h2>
-      <div class="service-card" style="margin-bottom: 1.5rem;">
-        <h3>What is the typical timeline for launching my store?</h3>
-        <p>The majority of stores are launched within 24 to 48 hours after the setup process begins, depending on the specific requirements of your project.</p>
-      </div>
-      <div class="service-card" style="margin-bottom: 1.5rem;">
-        <h3>Will I need prior technical expertise to use your services?</h3>
-        <p>Not at all. Websy is designed to be entirely no-code and user-friendly, making it ideal for beginners with no technical background.</p>
-      </div>
-      <div class="service-card">
-        <h3>Is it possible to make changes or customizations to my site at a later stage?</h3>
-        <p>Absolutely. You may request modifications or manage updates at any time via our user-friendly dashboard.</p>
-      </div>
-    </section>
-  </main>
+  <!-- ✅ FAQ section starts here -->
+  <section id="faq" tabindex="-1" aria-label="Frequently Asked Questions">
+    <h2 style="text-align:center; color: var(--accent); margin-bottom: 2rem;">FAQs</h2>
+    <div class="service-card" style="margin-bottom: 1.5rem;">
+      <h3>What is the typical timeline for launching my store?</h3>
+      <p>The majority of stores are launched within 24 to 48 hours after the setup process begins, depending on the specific requirements of your project.</p>
+    </div>
+    <div class="service-card" style="margin-bottom: 1.5rem;">
+      <h3>Will I need prior technical expertise to use your services?</h3>
+      <p>Not at all. Websy is designed to be entirely no-code and user-friendly, making it ideal for beginners with no technical background.</p>
+    </div>
+    <div class="service-card">
+      <h3>Is it possible to make changes or customizations to my site at a later stage?</h3>
+      <p>Absolutely. You may request modifications or manage updates at any time via our user-friendly dashboard.</p>
+    </div>
+  </section>
+  <!-- ✅ FAQ section ends here -->
+</main>
+
 
   <button id="callUsBtn" aria-label="Call us now" title="Call us now" onclick="window.location.href='tel:+447881092981'">Call Us</button>
 
   <script>
+    // Dark/Light mode toggle
     const modeToggle = document.getElementById('modeToggle');
     const modeIcon = document.getElementById('modeIcon');
 
     function setMode(mode) {
       if(mode === 'light') {
         document.body.classList.add('light');
-        modeIcon.innerHTML = `
+        // Change icon to sun
+        modeIcon.innerHTML = 
           <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/>
           <line x1="12" y1="1" x2="12" y2="3" />
           <line x1="12" y1="21" x2="12" y2="23" />
@@ -154,14 +397,16 @@
           <line x1="21" y1="12" x2="23" y2="12" />
           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-        `;
+        ;
       } else {
         document.body.classList.remove('light');
-        modeIcon.innerHTML = `<path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0021 12.79z"/>`;
+        // Change icon to moon
+        modeIcon.innerHTML = <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0021 12.79z"/>;
       }
       localStorage.setItem('theme', mode);
     }
 
+    // Load saved mode or default dark
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setMode(savedTheme);
 
@@ -172,6 +417,21 @@
         setMode('light');
       }
     });
+
+
+    <section id="contact" tabindex="-1" aria-label="Contact section">
+  <h2>Contact Us</h2>
+  <form id="contactForm" aria-describedby="contactDesc" action="https://formspree.io/f/xjkwzyop" method="POST">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required autocomplete="name" />
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required autocomplete="email" />
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
   </script>
 </body>
 </html>
