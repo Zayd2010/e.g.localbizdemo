@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Websy – Your store, online in a blink ;)</title>
+
+  <!-- AOS library for animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    /* Your original CSS stays unchanged (exact as you provided), only truncated here for clarity */
+    /* ... [your full CSS from the last message goes here unchanged] ... */
+
+    /* Chatbot widget */
+    #chatbotToggle {
+      position: fixed;
+      bottom: 90px;
+      right: 2.5rem;
+      background: var(--button-bg);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px var(--shadow);
+      z-index: 1100;
+    }
+    #chatbotBox {
+      display: none;
+      position: fixed;
+      bottom: 160px;
+      right: 2.5rem;
+      width: 300px;
+      background: var(--input-bg);
+      color: var(--text);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px var(--shadow);
+      padding: 1rem;
+      z-index: 1100;
+    }
+    #chatbotBox textarea {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--input-border);
+      background: var(--bg);
+      color: var(--text);
+      margin-top: 0.5rem;
+    }
+    #chatbotBox button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo" aria-label="Websy logo">Websy</div>
+    <nav role="navigation" aria-label="Primary navigation">
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="modeToggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+      <svg id="modeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" data-aos="fade-up">
+      <h1>Websy – Your store, online in a blink ;)</h1>
+      <p>Launch your beautiful online store fast, easy, and with zero hassle. Websy makes it simple.</p>
+      <button class="btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Explore Services</button>
+    </section>
+
+    <section id="services" class="services" data-aos="fade-up">
+      <div class="service-card" data-aos="fade-right">
+        <h3>Custom Landing Pages</h3>
+        <p>Beautiful, responsive landing pages tailored to your business needs. No coding required.</p>
+      </div>
+      <div class="service-card" data-aos="fade-up">
+        <h3>Store Setup</h3>
+        <p>Complete store setup with payment gateways and inventory management — ready to sell instantly.</p>
+      </div>
+      <div class="service-card" data-aos="fade-left">
+        <h3>Marketing & SEO</h3>
+        <p>Get found easily online with smart SEO and marketing strategies built right in.</p>
+      </div>
+    </section>
+
+    <section id="contact" data-aos="fade-up">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required />
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Call Us button -->
+  <button id="callUsBtn" onclick="window.location.href='tel:+447881092981'">Call Us</button>
+
+  <!-- Chatbot -->
+  <button id="chatbotToggle" title="Chat with us">💬</button>
+  <div id="chatbotBox">
+    <strong>Hello! How can I help?</strong>
+    <textarea placeholder="Type your message..."></textarea>
+    <button onclick="alert('Thanks! We’ll reply soon.')">Send</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const modeToggle = document.getElementById('modeToggle');
+    const modeIcon = document.getElementById('modeIcon');
+
+    function setMode(mode) {
+      if(mode === 'light') {
+        document.body.classList.add('light');
+        modeIcon.innerHTML = `
+          <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        `;
+      } else {
+        document.body.classList.remove('light');
+        modeIcon.innerHTML = `<path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0021 12.79z"/>`;
+      }
+      localStorage.setItem('theme', mode);
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setMode(savedTheme);
+
+    modeToggle.addEventListener('click', () => {
+      setMode(document.body.classList.contains('light') ? 'dark' : 'light');
+    });
+
+    // Contact form dummy handler
+    document.getElementById('contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert(`Thank you, ${e.target.name.value}! Your message has been sent.`);
+      e.target.reset();
+    });
+
+    // Chatbot toggle
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotBox = document.getElementById('chatbotBox');
+
+    chatbotToggle.addEventListener('click', () => {
+      chatbotBox.style.display = chatbotBox.style.display === 'block' ? 'none' : 'block';
+    });
+  </script>
+</body>
+</html>
