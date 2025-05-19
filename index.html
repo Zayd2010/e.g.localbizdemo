@@ -1,431 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Websy – Your store, online in a blink ;)</title>
-  <style>
-    /* Root colors */
-    :root {
-      --bg-dark: #000;
-      --text-dark: #fff;
-      --accent-dark: #0071e3;
-      --link-dark: #61dafb;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Websy – Your store, online in a blink ;)</title>
+<style>
+  :root {
+    /* Dark mode colors */
+    --bg-dark: #000000;
+    --text-dark: #e5e5e5;
+    --accent-dark: #0a84ff;
+    --link-dark: #40a9ff;
 
-      --bg-light: #fff;
-      --text-light: #1c1c1e;
-      --accent-light: #0071e3;
-      --link-light: #0071e3;
+    /* Light mode colors */
+    --bg-light: #ffffff;
+    --text-light: #1c1c1e;
+    --accent-light: #0071e3;
+    --link-light: #0066cc;
 
-      --transition-speed: 0.3s;
-      --border-radius: 6px;
-      --font-family: 'Poppins', sans-serif;
-    }
+    --transition-speed: 0.3s;
+    --border-radius: 6px;
+    --font-family: 'Poppins', sans-serif;
+  }
 
-    /* Base styles */
-    body {
-      margin: 0; padding: 0;
-      font-family: var(--font-family);
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-      line-height: 1.6;
-      transition: background-color var(--transition-speed), color var(--transition-speed);
-    }
-    body.light {
-      background-color: var(--bg-light);
-      color: var(--text-light);
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  }
+  body.light {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+  }
 
-    a {
-      color: var(--link-dark);
-      text-decoration: none;
-      transition: color var(--transition-speed);
-    }
-    body.light a {
-      color: var(--link-light);
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #444;
+  }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #444;
-      position: sticky;
-      top: 0;
-      background-color: inherit;
-      z-index: 1000;
-    }
+  .logo {
+    font-weight: 700;
+    font-size: 1.75rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--accent-dark);
+    cursor: default;
+    user-select: none;
+  }
+  body.light .logo {
+    color: var(--accent-light);
+  }
 
-    .logo {
-      font-weight: 800;
-      font-size: 1.75rem;
-      letter-spacing: -0.04em;
-      color: var(--accent-dark);
-      cursor: default;
-      user-select: none;
-      transition: color var(--transition-speed);
-    }
-    body.light .logo {
-      color: var(--accent-light);
-    }
+  nav a {
+    color: var(--link-dark);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color var(--transition-speed) ease;
+  }
+  body.light nav a {
+    color: var(--link-light);
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
 
+  .mode-toggle {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: color var(--transition-speed) ease;
+  }
+  body.light .mode-toggle {
+    color: var(--text-light);
+  }
+
+  main {
+    max-width: 900px;
+    margin: 3rem auto 4rem;
+    padding: 0 1rem;
+  }
+
+  section {
+    margin-bottom: 4rem;
+  }
+
+  h1, h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+  }
+  body.light .hero p {
+    color: var(--text-light);
+  }
+
+  .button {
+    background-color: var(--accent-dark);
+    color: white;
+    padding: 0.9rem 2.2rem;
+    border-radius: var(--border-radius);
+    border: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  .button:hover {
+    background-color: #0077ff;
+  }
+  body.light .button {
+    background-color: var(--accent-light);
+  }
+  body.light .button:hover {
+    background-color: #005bb5;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+  }
+  body.light ul {
+    color: var(--text-light);
+  }
+  ul li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent-dark);
+  }
+  body.light ul li::before {
+    color: var(--accent-light);
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #888;
+    border-radius: var(--border-radius);
+    background: var(--bg-dark);
+    color: var(--text-dark);
+    font-size: 1rem;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+  }
+  body.light input, body.light textarea {
+    background: var(--bg-light);
+    color: var(--text-light);
+    border: 1px solid #bbb;
+  }
+
+  button[type="submit"] {
+    background-color: var(--accent-dark);
+    color: white;
+    border: none;
+    padding: 0.9rem 2.2rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  button[type="submit"]:hover {
+    background-color: #0077ff;
+  }
+  body.light button[type="submit"] {
+    background-color: var(--accent-light);
+  }
+  body.light button[type="submit"]:hover {
+    background-color: #005bb5;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid #444;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+  }
+  body.light footer {
+    border-top-color: #ddd;
+    color: var(--text-light);
+  }
+
+  /* Contact call link button style */
+  .call-button {
+    display: inline-block;
+    background-color: var(--accent-dark);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  .call-button:hover {
+    background-color: #0077ff;
+  }
+  body.light .call-button {
+    background-color: var(--accent-light);
+  }
+  body.light .call-button:hover {
+    background-color: #005bb5;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero h2 {
+      font-size: 1.8rem;
+    }
     nav a {
-      margin-left: 2rem;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: var(--border-radius);
-      transition: background-color var(--transition-speed), color var(--transition-speed);
+      margin-left: 1rem;
+      font-size: 0.95rem;
     }
-    nav a:hover {
-      background-color: var(--accent-dark);
-      color: #fff;
-    }
-    body.light nav a:hover {
-      background-color: var(--accent-light);
-      color: #fff;
-    }
+  }
+</style>
+</head>
+<body>
 
-    /* Light/Dark mode toggle */
-    #modeToggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.6rem;
-      color: var(--text-dark);
-      transition: color var(--transition-speed);
-    }
-    body.light #modeToggle {
-      color: var(--text-light);
-    }
+<header>
+  <div class="logo">Websy</div>
 
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
 
-    section {
-      margin-bottom: 4rem;
-    }
+  <button id="modeToggle" class="mode-toggle" aria-label="Toggle dark/light mode">🌙</button>
+</header>
 
-    h1, h2 {
-      font-weight: 800;
-      margin-bottom: 1rem;
-      color: inherit;
-    }
+<main>
+  <section class="hero">
+    <h2>Your store, online in a blink ;)</h2>
+    <p>Professional one-page websites built for local businesses, fast.</p>
+    <a href="#contact" class="button">Get Started</a>
+  </section>
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 4rem 1rem;
-      background: linear-gradient(135deg, #0071e3 0%, #005bbb 100%);
-      border-radius: 12px;
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(0,113,227,0.4);
-    }
-    .hero p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
-    .button {
-      background-color: #fff;
-      color: #0071e3;
-      font-weight: 700;
-      padding: 0.75rem 2rem;
-      border-radius: var(--border-radius);
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: background-color var(--transition-speed), color var(--transition-speed);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-    .button:hover {
-      background-color: #cce4ff;
-      color: #005bbb;
-    }
+  <section id="about">
+    <h2>About Us</h2>
+    <p><strong>Stefan Konig</strong> handles outreach and onboarding.<br />
+       <strong>Zayd AbdulQadir & Nadin Don</strong> design and build professional sites within 48 hours.</p>
+  </section>
 
-    body.light .hero {
-      background: linear-gradient(135deg, #0071e3 0%, #3399ff 100%);
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(51,153,255,0.4);
-    }
-    body.light .button {
-      background-color: #0071e3;
-      color: #fff;
-    }
-    body.light .button:hover {
-      background-color: #005bbb;
-    }
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form action="mailto:zaydabdulqadir@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="Name" placeholder="Your Name" required />
+      <input type="text" name="Business" placeholder="Business Name" required />
+      <input type="email" name="Email" placeholder="Email Address" required />
+      <textarea name="Message" rows="4" placeholder="What can we help with?"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <a href="tel:+447881092981" class="call-button" aria-label="Call us">Call Us</a>
+  </section>
+</main>
 
-    /* Section content */
-    ul {
-      list-style: none;
-      padding: 0;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    ul li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.8rem;
-      font-weight: 500;
-    }
-    ul li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--accent-dark);
-      font-weight: 700;
-      transition: color var(--transition-speed);
-    }
-    body.light ul li::before {
-      color: var(--accent-light);
-    }
+<footer>
+  &copy; 2025 Websy. All rights reserved.
+</footer>
 
-    /* Portfolio grid */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .portfolio-item {
-      background-color: rgba(0,0,0,0.05);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: box-shadow var(--transition-speed);
-      cursor: pointer;
-    }
-    .portfolio-item:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    }
-    body.light .portfolio-item {
-      background-color: rgba(0,0,0,0.03);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    }
-    body.light .portfolio-item:hover {
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    }
-    .portfolio-item img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      display: block;
-    }
-    .portfolio-item h3 {
-      margin: 0.75rem;
-      font-weight: 700;
-    }
+<script>
+  const modeToggle = document.getElementById('modeToggle');
+  const body = document.body;
 
-    /* Testimonials */
-    .testimonials {
-      max-width: 700px;
-      margin: 0 auto;
-      font-style: italic;
-      color: #555;
-      border-left: 4px solid var(--accent-dark);
-      padding-left: 1rem;
-      transition: border-color var(--transition-speed), color var(--transition-speed);
+  function updateToggleIcon() {
+    if(body.classList.contains('light')) {
+      modeToggle.textContent = '🌞'; // sun icon for light mode
+    } else {
+      modeToggle.textContent = '🌙'; // moon icon for dark mode
     }
-    body.light .testimonials {
-      border-color: var(--accent-light);
-      color: #444;
-    }
-    .testimonial-author {
-      font-weight: 700;
-      margin-top: 0.5rem;
-      color: inherit;
-    }
+  }
 
-    /* Steps */
-    .steps {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .step {
-      flex: 1 1 160px;
-      background-color: rgba(0,0,0,0.05);
-      border-radius: var(--border-radius);
-      padding: 1.25rem;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: background-color var(--transition-speed);
-    }
-    .step h3 {
-      margin-bottom: 0.5rem;
-      color: var(--accent-dark);
-      transition: color var(--transition-speed);
-    }
-    body.light .step {
-      background-color: rgba(0,0,0,0.03);
-    }
-    body.light .step h3 {
-      color: var(--accent-light);
-    }
+  modeToggle.addEventListener('click', () => {
+    body.classList.toggle('light');
+    updateToggleIcon();
+  });
 
-    /* Pricing */
-    .pricing {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .plan {
-      border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      padding: 2rem;
-      width: 280px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: box-shadow var(--transition-speed), border-color var(--transition-speed);
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
-    .plan h3 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      color: var(--accent-dark);
-    }
-    .plan ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1rem 0;
-    }
-    .plan ul li {
-      margin-bottom: 0.75rem;
-      position: relative;
-      padding-left: 1.2rem;
-    }
-    .plan ul li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--accent-dark);
-    }
-    .plan button {
-      background-color: var(--accent-dark);
-      color: #fff;
-      border: none;
-      padding: 0.75rem 1.25rem;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      font-weight: 700;
-      transition: background-color var(--transition-speed);
-      width: 100%;
-    }
-    .plan button:hover {
-      background-color: #005bbb;
-    }
-    body.light .plan {
-      background-color: var(--bg-light);
-      color: var(--text-light);
-      border-color: #ccc;
-    }
-    body.light .plan h3, 
-    body.light .plan ul li::before, 
-    body.light .plan button {
-      color: var(--accent-light);
-    }
-    body.light .plan button {
-      background-color: var(--accent-light);
-      color: #fff;
-    }
-    body.light .plan button:hover {
-      background-color: #005bbb;
-    }
+  // Initialize icon on page load
+  updateToggleIcon();
+</script>
 
-    /* FAQ */
-    .faq {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .faq-item {
-      border-bottom: 1px solid #ccc;
-      padding: 1rem 0;
-      cursor: pointer;
-    }
-    .faq-item:last-child {
-      border-bottom: none;
-    }
-    .faq-question {
-      font-weight: 700;
-      position: relative;
-      padding-right: 1.5rem;
-    }
-    .faq-question::after {
-      content: "+";
-      position: absolute;
-      right: 0;
-      top: 0;
-      font-weight: 700;
-      transition: transform 0.3s ease;
-    }
-    .faq-item.open .faq-question::after {
-      content: "-";
-      transform: rotate(180deg);
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      margin-top: 0.5rem;
-      color: #555;
-    }
-    .faq-item.open .faq-answer {
-      max-height: 200px;
-    }
-    body.light .faq-answer {
-      color: #444;
-    }
-
-    /* Contact form */
-    form {
-      max-width: 700px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-    }
-    input, textarea {
-      font-family: inherit;
-      font-size: 1rem;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid #888;
-      border-radius: var(--border-radius);
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-      transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent-dark);
-      box-shadow: 0 0 5px var(--accent-dark);
-    }
-    body.light input, body.light textarea {
-      background-color: var(--bg-light);
-      color: var(--text-light);
-      border-color: #ccc;
-    }
-    body.light input:focus, body.light textarea:focus {
-      border-color: var(--accent-light);
-      box-shadow: 0 0 5px var(--accent-light);
-    }
-    button[type="submit"] {
-      align-self: flex-start;
-      background-color: var(--accent-dark);
-      color: #fff;
-      border: none;
-      padding: 0.75rem 2rem;
-      border-radius: var(--border-radius);
+</body>
+</html>
